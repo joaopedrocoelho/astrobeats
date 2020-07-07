@@ -1,0 +1,137 @@
+.article-container {
+  margin: auto;
+  width: 46vw;
+  font-family: "Merriweather";
+}
+
+.header {
+  width: 100%;
+  max-height: 20vw;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+}
+
+.header img {
+  position: relative;
+  margin: auto;
+  width: 100%;
+  height: auto;
+}
+
+h2.title {
+  font-family: "Fivo Sans Bold";
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  max-width: 46vw;
+  font-weight: bold;
+  text-align: center;
+  font-size: 4vw;
+  line-height: 1.3;
+  padding: 2vw 0 2vw 0vw;
+  margin: 2vw auto;
+  color: var(--dark-text-color);
+}
+
+.underline {
+  background-image: linear-gradient(transparent calc(65% - 5px), #000cc4 5px);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  display: inline;
+}
+
+.shadow {
+  text-shadow: 0.07em 0.05em 0 var(--text-highlight-color);
+}
+
+.author-date {
+  font-size: 0.7vw;
+  font-weight: 200;
+  letter-spacing: 0.1vw;
+  color: #3b3b3b;
+  margin-bottom: 4vw;
+  margin-top: 4vw;
+}
+
+.content {
+  line-height: 2;
+  font-weight: normal;
+  font-size: 1.2vw;
+}
+
+.content img {
+  max-width: 36vw;
+  margin: 3vw auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.content a,
+.content a:visited,
+.content a:active {
+  background: linear-gradient(
+    to bottom,
+    var(--text-hover-color) 0%,
+    var(--text-hover-color) 100%
+  );
+  background-position: 0 100%;
+  background-repeat: repeat-x;
+  background-size: 3px 3px;
+  color: var(--text-hover-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.content a:hover {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='squiggle-link' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.squiggle{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}%3C/style%3E%3Cpath fill='none' stroke='%23843b8c' stroke-width='2' class='squiggle' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
+  background-position: 0 100%;
+  background-size: auto 6px;
+  background-repeat: repeat-x;
+  text-decoration: none;
+}
+
+.content blockquote {
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+  font-family: "Lato";
+  font-weight: bold;
+  font-size: 2vw;
+}
+
+.content blockquote:before {
+  color: var(--shadow);
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+.content blockquote p {
+  display: inline;
+  background-image: linear-gradient(
+    to right,
+    var(--text-highlight-color) 0,
+    var(--text-highlight-color) 100%
+  );
+  background-position: 0 0.2em;
+  box-shadow: inset 0 0.8em 0 0 white;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  transition: background 0.5s;
+  color: var(--dark-text-color);
+}
+
+.content ul li {
+  font-family: "Merriweather";
+}
+
+.content h3 {
+  font-family: "Fivo Sans Bold";
+  font-size: 3vw;
+  text-shadow: 0.07em 0.05em 0 var(--shadow);
+  color: var(--dark-text-color);
+}

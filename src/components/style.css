@@ -1,0 +1,105 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --border-color: #df5ee8;
+  --text-highlight-color: #d193ff;
+  --text-hover-color: #843b8c;
+  --shadow: #a4c7c9;
+  --underline: #ffde4c;
+  --lighter-text-color: #e6e6e6;
+  --light-text-color: #3b3b3b;
+  --dark-text-color: #11193f;
+  --long-text-color: black;
+  --title-typeface: ;
+  --button-typeface: ;
+  --button-font-size: 1.5vw;
+  --title-font-size: ;
+  --nav-bg-color: black;
+}
+body {
+  margin: 0;
+  font-family: "Merriweather";
+}
+
+/* Footer styling */
+
+footer {
+  background-color: var(--nav-bg-color);
+  display: flex;
+  flex-flow: row no-wrap;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 20vw;
+  max-height: 25vw;
+  overflow: hidden;
+  color: white;
+}
+
+.footer-logo-container {
+  display: flex;
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+  flex-flow: column wrap;
+  max-width: 250px;
+}
+
+img.footer-symbol {
+  width: 10vw;
+  display: flex;
+}
+
+footer .footer-menu-list {
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 0;
+  margin-left: 2vw;
+  margin-top: 0;
+  margin-right: 2vw;
+  color: white;
+  font-family: "Lato";
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.footer-menu-item {
+  margin-top: 2vw;
+  position: relative;
+  overflow: hidden;
+  align-self: flex-start;
+}
+
+.footer-menu-item a {
+  text-decoration: none;
+  color: white;
+}
+
+.social-media-icons {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.social-media-icons li {
+  width: 3.5vw;
+  padding-right: 1vw;
+}
+
+.gatsby {
+  font-family: "Lato";
+  font-size: 0.8vw;
+  font-weight: 200;
+  margin-left: 1vw;
+}
+
+.gatsby a {
+  text-decoration: none;
+  color: var(--border-color);
+}
+
+.gatsby a:hover {
+  text-decoration: underline;
+}

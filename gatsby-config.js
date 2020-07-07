@@ -32,8 +32,31 @@ module.exports = {
       options: {
         apiURL: `https://astrobeats-cms.herokuapp.com`,
         queryLimit: 10000, // Default to 100
-        contentTypes: [`article`],
+        contentTypes: [`article`, `category`, `author`],
         //If using single types place them in this array.
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "fonts",
+        path: `${__dirname}/src/fonts/`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        google: {
+          families: ["Merriweather", "Montserrat", "Lato"],
+        },
+      },
+    },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /assets/,
+        },
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

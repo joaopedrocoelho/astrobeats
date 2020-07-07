@@ -1,0 +1,125 @@
+@font-face {
+  font-family: "Fivo Sans Bold";
+  font-style: normal;
+  font-weight: bold; /* or 400 */
+  src: url("../../fonts/fivosans-bold-webfont.woff");
+}
+
+@font-face {
+  font-family: "Fivo Sans Bold";
+  font-style: normal;
+  font-weight: bold; /* or 400 */
+  src: url("../../fonts/fivosans-bold-webfont.woff2");
+}
+
+@font-face {
+  font-family: "Fivo Sans Light Oblique";
+  font-style: italic;
+  font-weight: 300; /* or 400 */
+  src: url("../../fonts/fivosans-light-oblique-webfont.woff2");
+}
+
+@font-face {
+  font-family: "Fivo Sans Light Oblique";
+  font-style: italic;
+  font-weight: 300; /* or 400 */
+  src: url("../../fonts/fivosans-light-oblique-webfont.woff");
+}
+
+@font-face {
+  font-family: "Fivo Sans Light";
+  font-style: normal;
+  font-weight: 300; /* or 400 */
+  src: url("../../fonts/fivosans-light-webfont.woff2");
+}
+
+@font-face {
+  font-family: "Fivo Sans Light";
+  font-style: normal;
+  font-weight: 300; /* or 400 */
+  src: url("../../fonts/fivosans-light-webfont.woff");
+}
+
+@font-face {
+  font-family: "Fivo Sans Medium Oblique";
+  font-style: italic;
+  font-weight: 400; /* or 400 */
+  src: url("../../fonts/fivosans-medium-oblique-webfont.woff");
+}
+
+@font-face {
+  font-family: "Fivo Sans Medium Oblique";
+  font-style: italic;
+  font-weight: 400; /* or 400 */
+  src: url("../../fonts/fivosans-medium-oblique-webfont.woff2");
+}
+
+@font-face {
+  font-family: "Fivo Sans Medium ";
+  font-style: normal;
+  font-weight: 500; /* or 400 */
+  src: url("../../fonts/fivosans-medium-webfont.woff");
+}
+
+@font-face {
+  font-family: "Fivo Sans Medium";
+  font-style: normal;
+  font-weight: 500; /* or 400 */
+  src: url("../../fonts/fivosans-medium-webfont.woff");
+}
+
+@font-face {
+  font-family: "Fivo Sans Oblique";
+  font-style: italic;
+  font-weight: 400; /* or 400 */
+  src: url("../../fonts/fivosans-oblique-webfont.woff");
+}
+
+@font-face {
+  font-family: "Fivo Sans Oblique";
+  font-style: italic;
+  font-weight: 400; /* or 400 */
+  src: url("../../fonts/fivosans-oblique-webfont.woff");
+}
+
+@font-face {
+  font-family: "Fivo Sans Regular";
+  font-style: normal;
+  font-weight: 400; /* or 400 */
+  src: url("../../fonts/fivosans-regular-webfont.woff");
+}
+
+@font-face {
+  font-family: "Fivo Sans Regular";
+  font-style: normal;
+  font-weight: 400; /* or 400 */
+  src: url("../../fonts/fivosans-regular-webfont.woff2");
+}
+
+@font-face {
+  font-family: "Fivo Sans Thin Oblique";
+  font-style: italic;
+  font-weight: 200; /* or 400 */
+  src: url("../../fonts/fivosans-thin-oblique-webfont.woff2");
+}
+
+@font-face {
+  font-family: "Fivo Sans Thin Oblique";
+  font-style: italic;
+  font-weight: 200; /* or 400 */
+  src: url("../../fonts/fivosans-thin-oblique-webfont.woff");
+}
+
+@font-face {
+  font-family: "Fivo Sans Thin";
+  font-style: normal;
+  font-weight: 200; /* or 400 */
+  src: url("../../fonts/fivosans-thin-webfont.woff");
+}
+
+@font-face {
+  font-family: "Fivo Sans Thin";
+  font-style: normal;
+  font-weight: 200; /* or 400 */
+  src: url("../../fonts/fivosans-thin-webfont.woff2");
+}

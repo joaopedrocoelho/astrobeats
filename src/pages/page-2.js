@@ -1,16 +1,25 @@
 import React from "react"
-import { Link } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
 
-const SecondPage = () => (
-  <Layout>
-    <SEO title="Page two" />
-    <h1>Hi from the second page</h1>
-    <p>Welcome to page 2</p>
-    <Link to="/">Go back to the homepage</Link>
-  </Layout>
-)
+import Article from "../components/article"
 
+const SecondPage = ({ data }) => {
+  console.log(data.allStrapiArticle.nodes)
+  return (
+    <Layout>
+      <Article
+        title="hey"
+        content="hey"
+        author="hey"
+        category="hey"
+        date="hey"
+        cover="hey"
+        authorPath="hey"
+        categoryPath="hey"
+      />
+    </Layout>
+  )
+}
 export default SecondPage
