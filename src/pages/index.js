@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useRef, createRef, useEffect } from "react"
 import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
@@ -8,24 +8,61 @@ import Card from "../components/card"
 
 const IndexPage = ({ data }) => {
   console.log("IndexPage.render data", data)
+  const [currentIndex, setIndex] = useState(3)
+
+  const element = useRef(null)
+
+  const observer = useRef(
+    new IntersectionObserver(
+      entries => {
+        const first = entries[0]
+        console.log("first", first)
+        if (first.isIntersecting) {
+          setIndex(currentIndex + 3)
+        }
+      },
+      { threshold: 0.2 }
+    )
+  )
+
+  useEffect(() => {
+    console.log("element", element)
+
+    const currentObserver = observer.current
+    const currentElement = element.current
+    if (currentElement) {
+      currentObserver.observe(currentElement)
+    }
+
+    return () => {
+      if (currentElement) {
+        currentObserver.unobserve(currentElement)
+      }
+    }
+  }, [])
+
   return (
     <div>
-      <Layout>
-        <Hero />
+      <Layout forwardedRef={element}>
         <SEO title="Home" />
+
         <div className="article-cards">
-          {data.allStrapiArticle.nodes.map(article => (
-            <Card
-              id={article.id}
-              title={article.title}
-              category={article.categories.name}
-              author={article.author.name}
-              content={article.content}
-              imgUrl={article.cover.publicURL}
-              date={article.created_at}
-              articlePath={"articles/" + article.slug}
-            />
-          ))}
+          {data.allStrapiArticle.nodes
+            .slice(0, currentIndex)
+            .map((article, index, cards) => {
+              return (
+                <Card
+                  id={article.id}
+                  title={article.title}
+                  category={article.categories}
+                  author={article.author.name}
+                  content={article.content}
+                  imgUrl={article.cover.publicURL}
+                  date={article.created_at}
+                  slug={article.slug}
+                />
+              )
+            })}
         </div>
       </Layout>
     </div>

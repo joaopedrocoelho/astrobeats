@@ -1,6 +1,6 @@
 import React from "react"
 import Layout from "./layout"
-import { Link, graphql } from "gatsby"
+import { Link } from "gatsby"
 
 import ReactMarkdown from "react-markdown"
 import "./styles/article.css"
@@ -15,19 +15,28 @@ const Article = ({
   authorPath,
   categoryPath,
 }) => (
-  <Layout>
+  <Layout heroIsVisible={false}>
     <div className="header">
       <img src={cover} />
     </div>
-    <h2 className="title shadow">{title}</h2>
-    <div className="article-container">
-      <p className="content">
-        <ReactMarkdown source={content} />
-      </p>
-      <h6 className="author-date">
-        Posted by <Link to={authorPath}>{author}</Link> on {date} in{" "}
-        <Link to={categoryPath}>{category}</Link>
-      </h6>
+    <div className="main-column">
+      <h2 className="title shadow">{title}</h2>
+      <div className="article-container">
+        <p className="content">
+          <ReactMarkdown source={content} />
+        </p>
+        <h6 className="author-date">
+          Posted by <Link to={authorPath}>{author}</Link> on {date} in{" "}
+          {category.map(category => {
+            return (
+              <>
+                <Link to={`/category/${category.name}`}>{category.name}</Link>
+                <span>, </span>
+              </>
+            )
+          })}
+        </h6>
+      </div>
     </div>
   </Layout>
 )

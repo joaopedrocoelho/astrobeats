@@ -1,6 +1,7 @@
 .article-cards {
   margin: auto;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
   max-width: 46vw;
@@ -12,15 +13,19 @@
 .card a {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   border: 0vw solid;
   border-radius: 0.6vw;
-  margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 2vw 0;
   text-decoration: none;
   color: black;
   transition: 0.4s ease-in;
+}
+
+.card {
+  width: 100%;
 }
 
 .card a:active {
@@ -56,9 +61,11 @@
 .card-title {
   font-size: calc(2em * 1.2);
   padding: 0vw 2vw 0;
-  font-family: "Fivo Sans Bold";
-  line-height: 1.3em;
+  font-family: "Lato";
+  font-weight: 800;
+  line-height: 1.5em;
   transition: 0.4s ease;
+  display: flex;
 }
 
 .card a:hover .card-title {
@@ -72,7 +79,8 @@
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  width: 100%;
+  width: inherit;
+  max-width: 46vw;
   max-height: 5.4em;
   line-height: 1.8em;
   padding: 0 2vw 1vw 2vw;
@@ -80,14 +88,146 @@
 }
 
 .card-info {
-  font-family: "Fivo Sans Light";
+  position: relative;
+  font-family: "Lato";
+  font-weight: 300;
   padding-left: 2.1vw;
   margin-top: 0;
   margin-bottom: 1vw;
 }
+
+.card-info span:nth-child(n + 2) {
+  margin-left: 2vw;
+}
+
 .card-info span img {
   width: 1em;
   height: 1em;
   margin: 0 0.5vw;
   vertical-align: text-bottom;
+}
+
+.card-info span a {
+  margin: 0;
+  border: none;
+  flex-wrap: nowrap;
+  display: inline-flex;
+  text-decoration: underline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-info span a,
+.card-info span a:visited,
+.card-info span a:active {
+  background: linear-gradient(
+    to bottom,
+    var(--text-hover-color) 0%,
+    var(--text-hover-color) 100%
+  );
+  background-position: 0% 110%;
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  color: var(--text-hover-color);
+}
+
+.card-info span a:hover {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='squiggle-link' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.squiggle{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}%3C/style%3E%3Cpath fill='none' stroke='%23843b8c' stroke-width='2' class='squiggle' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
+  background-position: 0 100%;
+  background-size: auto 6px;
+  background-repeat: repeat-x;
+  text-decoration: none;
+  box-shadow: none;
+}
+
+@keyframes flipInX {
+  from {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+
+  to {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px);
+  }
+}
+.animate__flipInX {
+  -webkit-backface-visibility: visible !important;
+  backface-visibility: visible !important;
+  -webkit-animation-name: flipInX;
+  animation-name: flipInX;
+}
+
+@media screen and (max-width: 700px) {
+  .article-cards {
+    max-width: 90vw;
+  }
+
+  .card a {
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+    margin: 4vw 0;
+  }
+  .cover-outer-wrapper {
+    height: 20vh;
+  }
+
+  .card-img {
+    height: 20vh;
+  }
+
+  .card-title {
+    font-size: calc(1.4em * 1.2);
+    width: 100%;
+    padding: 0vw 3vw 0;
+  }
+
+  .card-blurb {
+    max-width: 76vw;
+    padding: 0vw 3vw 0;
+    margin-bottom: 3vw;
+    font-size: calc(0.8em * 1.2);
+  }
+
+  .card-info {
+    font-size: calc(0.6em * 1.2);
+    display: flex;
+    width: 100%;
+    /* flex-direction: column; */
+    padding: 0vw 3vw 0;
+  }
+
+  .card-info a {
+    box-shadow: none;
+  }
+
+  /* .card-info span:nth-child(2) {
+    padding: 1em 0;
+  } */
+
+  .card-info span a,
+  .card-info span a:visited,
+  .card-info span a:active {
+    background: none;
+  }
 }

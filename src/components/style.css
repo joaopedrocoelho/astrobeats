@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --border-color: #df5ee8;
   --text-highlight-color: #d193ff;
@@ -21,8 +25,27 @@
 body {
   margin: 0;
   font-family: "Merriweather";
+  overflow-x: hidden;
 }
 
+.columns {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.main-column {
+  margin-left: 8vw;
+}
+
+.side-column {
+  margin: 4vw auto;
+  align-content: flex-start;
+  width: 30vw;
+}
+.scale-down {
+  transform: translate3d(80% 0% 30%);
+}
 /* Footer styling */
 
 footer {
@@ -33,20 +56,19 @@ footer {
   align-items: center;
   min-height: 20vw;
   max-height: 25vw;
-  overflow: hidden;
   color: white;
+  margin-top: 3vw;
+  padding: 3vw;
 }
 
 .footer-logo-container {
   display: flex;
-  padding-left: 3.5vw;
-  padding-right: 3.5vw;
+  margin-right: 3vw;
   flex-flow: column wrap;
-  max-width: 250px;
 }
 
 img.footer-symbol {
-  width: 10vw;
+  width: 13vw;
   display: flex;
 }
 
@@ -61,6 +83,7 @@ footer .footer-menu-list {
   margin-right: 2vw;
   color: white;
   font-family: "Lato";
+  font-size: 1em;
   font-weight: 500;
   letter-spacing: 2px;
 }
@@ -84,14 +107,14 @@ footer .footer-menu-list {
 }
 
 .social-media-icons li {
-  width: 3.5vw;
+  width: 5vw;
   padding-right: 1vw;
 }
 
 .gatsby {
   font-family: "Lato";
-  font-size: 0.8vw;
-  font-weight: 200;
+  font-size: 1vw;
+  font-weight: 300;
   margin-left: 1vw;
 }
 
@@ -102,4 +125,56 @@ footer .footer-menu-list {
 
 .gatsby a:hover {
   text-decoration: underline;
+}
+
+.scroll-top-btn {
+  border-width: 0;
+}
+
+.scroll-top-btn:hover {
+  background-color: blue;
+}
+
+@media screen and (max-width: 600px) {
+  footer {
+    padding: 3vh;
+    flex: 1;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-flow: wrap;
+  }
+
+  .footer-logo-container {
+    max-width: 70vw;
+  }
+  img.footer-symbol {
+    width: 50vw;
+  }
+
+  footer .footer-menu-list {
+    font-size: 2em;
+    padding: 1.3em 1em 1em 1em;
+  }
+
+  .social-media-icons {
+    padding-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .social-media-icons li {
+    width: 15vw;
+    padding-right: 4vw;
+  }
+
+  .gatsby {
+    font-size: 3vw;
+    margin-top: 2vw;
+  }
+
+  .main-column {
+    margin: auto;
+  }
 }

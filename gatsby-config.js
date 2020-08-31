@@ -1,3 +1,9 @@
+const { isNil } = require("lodash")
+
+const mapPagesUrls = {
+  index: "/",
+}
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -47,7 +53,7 @@ module.exports = {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: ["Merriweather", "Montserrat", "Lato"],
+          families: ["Merriweather", "Montserrat", "Lato:100,300,400,700,900"],
         },
       },
     },
@@ -59,8 +65,17 @@ module.exports = {
         },
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    {
+      resolve: `@draftbox-co/gatsby-plugin-fusejs`,
+      options: {
+        fields: [`title`, `slug`],
+        resolvers: {
+          allSitePage: {
+            title: node => node.title,
+            slug: node => node.slug,
+          },
+        },
+      },
+    },
   ],
 }
