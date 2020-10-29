@@ -1,0 +1,20 @@
+.scroll-top-btn {
+  position: fixed;
+  bottom: 5vh;
+  right: 2vw;
+  z-index: 10;
+  border: none;
+  background-color: transparent;
+  color: var(--dark-shade);
+  visibility: hidden;
+}
+
+.scroll-top-btn:hover,
+.scroll-top-btn:active {
+  color: var(--text-hover-color);
+  outline: 0;
+}
+
+.btn-active {
+  visibility: visible;
+}

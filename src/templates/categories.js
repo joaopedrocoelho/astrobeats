@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql } from "gatsby"
 import Img from "gatsby-image"
 
 import Layout from "../components/layout"
@@ -7,8 +7,10 @@ import SEO from "../components/seo"
 import Card from "../components/card"
 import Pagination from "../components/pagination"
 
-const HoroscopesPage = ({ title = "Horoscopes", data }) => {
-  console.log("Horoscopes data", data)
+const currentURL = window.location.pathname.split("/")
+
+const CategoriesPage = ({ title = currentURL[2], data }) => {
+  console.log("categories data", data)
   return (
     <div>
       <Layout heroIsVisible={false}>
@@ -38,11 +40,11 @@ const HoroscopesPage = ({ title = "Horoscopes", data }) => {
   )
 }
 
-export default HoroscopesPage
+export default CategoriesPage
 export const HoroscopeQuery = graphql`
-  query allHoroscopes {
+  query allCategories($category: String! = "") {
     allStrapiArticle(
-      filter: { categories: { elemMatch: { name: { eq: "Horoscopes" } } } }
+      filter: { categories: { elemMatch: { name: { eq: $category } } } }
       sort: { fields: created_at, order: DESC }
     ) {
       totalCount

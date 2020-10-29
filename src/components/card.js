@@ -1,5 +1,6 @@
-import { Link, graphql } from "gatsby"
-import React, { useRef } from "react"
+import { Link } from "gatsby"
+import Img from "gatsby-image"
+import React from "react"
 import Fade from "react-reveal/Fade"
 import authorIcon from "../images/author_icon.png"
 import labelIcon from "../images/label_icon.png"
@@ -26,28 +27,31 @@ const Card = ({
   if (linkPath)
     window.location.href.indexOf("horoscopes") != -1
       ? (articlePath = "")
-      : (articlePath = "horoscopes/")
-  else articlePath = "articles/"
+      : (articlePath = "/horoscopes/")
+  else articlePath = "/articles/"
 
   return (
     <Fade bottom duration={700}>
       <li className="card" ref={forwardedRef}>
         <Link to={articlePath + slug}>
           <div className="cover-outer-wrapper">
-            <img src={imgUrl} className="card-img" />
+            <Img fluid={imgUrl} />
+            {/* <img src={imgUrl} className="card-img" /> */}
           </div>
           <h1 className="card-title hvr-sweep-to-right">{title}</h1>
           <p className="card-info">
             <span>
-              <img src={dateIcon} />
+              <img src={dateIcon} alt="date" />
               {date}
             </span>
             <span>
-              <img src={authorIcon} />
-              <Link to={`author/${author}`}>{author}</Link>
+              <img src={authorIcon} alt="author" />
+              <Link to={`#about`} className="about-author-open">
+                {author}
+              </Link>
             </span>
             <span>
-              <img src={labelIcon} />
+              <img src={labelIcon} alt="category" />
               {category.map((category, index) => {
                 return (
                   <>

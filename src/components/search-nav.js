@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { Link, navigate } from "gatsby"
 import "../components/styles/search.css"
 import { HiOutlineSearch } from "react-icons/hi"

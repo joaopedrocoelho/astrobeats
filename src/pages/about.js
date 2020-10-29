@@ -23,8 +23,8 @@ const About = ({ data }) => {
   )
 }
 export default About
-export const queryAuthors = graphql`
-  query allAuthors {
+export const queryAuthors2 = graphql`
+  query allAuthors2 {
     allStrapiAuthor {
       nodes {
         id

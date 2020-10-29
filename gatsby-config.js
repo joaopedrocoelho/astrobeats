@@ -38,7 +38,7 @@ module.exports = {
       options: {
         apiURL: `https://astrobeats-cms.herokuapp.com`,
         queryLimit: 10000, // Default to 100
-        contentTypes: [`article`, `category`, `author`],
+        contentTypes: [`article`, `category`, `author`, `appointment`],
         //If using single types place them in this array.
       },
     },
@@ -75,6 +75,15 @@ module.exports = {
             slug: node => node.slug,
           },
         },
+      },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images/`,
       },
     },
   ],

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
-import ReactMarkdown from "react-markdown"
+import { useStaticQuery, graphql, Link, navigate } from "gatsby"
+import Img from "gatsby-image"
+import Fade from "react-reveal/Fade"
 import Fuse from "fuse.js"
 import "../components/styles/search.css"
 
@@ -14,38 +15,51 @@ const SearchFuse = ({ isVisible = true, searchQuery }) => {
   const [term, setTerm] = useState("")
   const [results, setResults] = useState("")
   const [numberOfResults, setNumberR] = useState("")
+  const [moreResults, setMoreResults] = useState("")
 
   useEffect(() => {
     //setTimeout to avoid rendering results while user is typing
+    const currentPage = window.location.pathname.split("/")
+    console.log("currentPage", currentPage)
     const timeoutId = setTimeout(() => {
       if (term || searchQuery) {
+        if (currentPage[1] !== "search" && searchResults.length > 5) {
+          searchResults.length = 5
+          setMoreResults(
+            <Link to="/search" state={{ term }} className="more-results">
+              See more results
+            </Link>
+          )
+        }
         setResults(
           searchResults.map(entry => {
             return (
               <>
-                <li className="search-entry">
-                  <Link to={entry.item.path}>
-                    <div className="entryTitle">
-                      <img
-                        src={
-                          entry.item.context.cover != null
-                            ? entry.item.context.cover.publicURL
-                            : symbolImg
-                        }
-                        className="search-thumb"
-                      />
-                      <h3>{entry.item.context.title || entry.item.id}</h3>
-                    </div>
-                    <div className="entryContent">
-                      <LinesEllipsis
-                        text={entry.item.context.content || ""}
-                        maxLine="3"
-                        ellipsis="..."
-                        basedOn="words"
-                      />
-                    </div>
-                  </Link>
-                </li>
+                <Fade bottom duration={700}>
+                  <li className="search-entry">
+                    <Link to={entry.item.path}>
+                      <div className="entryTitle">
+                        <Img
+                          fluid={
+                            entry.item.context.cover != null
+                              ? entry.item.context.cover.childImageSharp.fluid
+                              : symbolImg
+                          }
+                          className="search-thumb"
+                        />
+                        <h3>{entry.item.context.title || entry.item.id}</h3>
+                      </div>
+                      <div className="entryContent">
+                        <LinesEllipsis
+                          text={entry.item.context.content || ""}
+                          maxLine="3"
+                          ellipsis="..."
+                          basedOn="words"
+                        />
+                      </div>
+                    </Link>
+                  </li>
+                </Fade>
               </>
             )
           })
@@ -95,6 +109,15 @@ const SearchFuse = ({ isVisible = true, searchQuery }) => {
               title
               cover {
                 publicURL
+                childImageSharp {
+                  fluid {
+                    base64
+                    aspectRatio
+                    src
+                    srcSet
+                    sizes
+                  }
+                }
               }
             }
             path
@@ -105,7 +128,12 @@ const SearchFuse = ({ isVisible = true, searchQuery }) => {
   )
 
   const options = {
-    keys: ["context.title", "context.content", "path", "cover.publicURL"],
+    keys: [
+      "context.title",
+      "context.content",
+      "path",
+      "cover.childImageSharp.fluid",
+    ],
     includeMatches: true,
     minMatchCharLength: 4,
   }
@@ -116,7 +144,8 @@ const SearchFuse = ({ isVisible = true, searchQuery }) => {
   const searchResults = fuse.search(term || searchQuery)
 
   return isVisible ? (
-    <div>
+    <div className="search-container">
+      <h2>Search</h2>
       <form className="search-box">
         <input
           type="text"
@@ -139,6 +168,8 @@ const SearchFuse = ({ isVisible = true, searchQuery }) => {
         {numberOfResults}
         {results}
       </ul>
+      {moreResults}
+      <hr></hr>
     </div>
   ) : (
     ""

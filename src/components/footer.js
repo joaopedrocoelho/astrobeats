@@ -1,6 +1,7 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React, { useState, forwardRef } from "react"
+import { Link, useStaticQuery } from "gatsby"
+import Img from "gatsby-image"
+import React from "react"
+import ReactMarkdown from "react-markdown"
 
 import SearchNav from "./search-nav"
 import FooterLogoImg from "../images/2x/white_wireframe_logo@2x.png"
@@ -11,6 +12,27 @@ import InstagramIcon from "../../assets/instagram.svg"
 import "./style.css"
 
 const Footer = ({ forwardedRef }) => {
+  const data = useStaticQuery(graphql`
+    query allAuthorsMobile {
+      allStrapiAuthor {
+        nodes {
+          id
+          name
+          avatar {
+            publicURL
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+          about
+        }
+      }
+    }
+  `)
+
+  const mobile = window.matchMedia("(max-width: 600px)")
   return (
     <footer ref={forwardedRef}>
       <div className="footer-logo-container">
@@ -21,13 +43,18 @@ const Footer = ({ forwardedRef }) => {
           <Link to="/">blog</Link>
         </li>
         <li className="footer-menu-item hover-animation">
-          <Link to="/horoscopes">horoscopes</Link>
+          <Link to="/category/Horoscopes">horoscopes</Link>
         </li>
         <li className="footer-menu-item hover-animation">
           <Link to="/consultations">consultations</Link>
         </li>
         <li className="footer-menu-item hover-animation">
-          <Link to="/about">about</Link>
+          <Link
+            to={mobile.matches ? "#about-mobile" : "#about"}
+            className="about-author-open"
+          >
+            about
+          </Link>
         </li>
         <li className="footer-menu-item">
           <SearchNav />
@@ -50,7 +77,20 @@ const Footer = ({ forwardedRef }) => {
           </a>
         </li>
       </ul>
-
+      <div className="mobile-about">
+        <div id="about-mobile"></div>
+        {data.allStrapiAuthor.nodes.map(author => {
+          return (
+            <div className={`about-author-mobile-text`}>
+              <div className="author-mobile-info">
+                <Img fluid={author.avatar.childImageSharp.fluid} />
+                <h3 className="about-mobile-header">{author.name}</h3>
+              </div>
+              <ReactMarkdown source={author.about} />
+            </div>
+          )
+        })}
+      </div>
       <div className="gatsby">
         © {new Date().getFullYear()}, Built with
         {` `}

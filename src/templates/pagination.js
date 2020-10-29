@@ -3,12 +3,13 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Pagination from "../components/pagination"
 import LoadingBar from "../../assets/loading_bar.svg"
+import Pagination from "../components/pagination"
 
 const Card = React.lazy(() => import("../components/card"))
 
 const IndexPage = ({ data }) => {
+  console.log("IndexPage.render data", data)
   const [currentIndex, setIndex] = useState(3)
 
   const element = useRef(null)
@@ -27,8 +28,6 @@ const IndexPage = ({ data }) => {
   )
 
   useEffect(() => {
-    console.log("element", element)
-
     const currentObserver = observer.current
     const currentElement = element.current
     if (currentElement) {
@@ -44,10 +43,11 @@ const IndexPage = ({ data }) => {
 
   return (
     <div>
-      <Layout forwardedRef={element}>
+      <Layout forwardedRef={element} heroIsVisible={false}>
         <SEO title="Home" />
 
         <div className="article-cards">
+          <div id="articles"></div>
           {data.allStrapiArticle.nodes
             .slice(0, currentIndex)
             .map((article, index, cards) => {
@@ -75,8 +75,12 @@ const IndexPage = ({ data }) => {
 
 export default IndexPage
 export const pageQuery = graphql`
-  query allArticles {
-    allStrapiArticle(sort: { fields: created_at, order: DESC }) {
+  query pageArticles($skip: Int! = 0) {
+    allStrapiArticle(
+      sort: { fields: created_at, order: DESC }
+      limit: 5
+      skip: $skip
+    ) {
       totalCount
       nodes {
         horoscope {

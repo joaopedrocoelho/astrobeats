@@ -2,22 +2,34 @@
   margin: auto;
   width: 50vw;
   font-family: "Merriweather";
-  line-height: 2;
-  font-weight: normal;
-  font-size: 1.2vw;
+  font-weight: 200;
+  letter-spacing: 0.5px;
+  line-height: 2.5;
+  font-size: 1.1vw;
+  color: rgb(34, 34, 34);
+}
+
+#articles {
+  position: absolute;
+  top: -4vw;
+  height: 0;
+  width: 100%;
 }
 
 .header {
   width: 100%;
-  max-height: 20vw;
+  height: 20vw;
+  margin-top: -5vw;
   overflow: hidden;
   display: flex;
   align-items: center;
   background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
 }
 
-.header img {
+.header .gatsby-image-wrapper {
   position: relative;
+  display: flex;
+  align-items: center;
   margin: auto;
   width: 100%;
   height: auto;
@@ -47,6 +59,15 @@ h2.title {
   text-shadow: 0.07em 0.05em 0 var(--text-highlight-color);
 }
 
+.article-container p:first-child {
+  text-indent: 2em;
+  margin: 1.5em auto 3em auto;
+}
+
+.article-container p {
+  text-indent: 2em;
+  margin: 3em auto;
+}
 .article-container img {
   max-width: 36vw;
   margin: 3vw auto;
@@ -64,10 +85,9 @@ h2.title {
   );
   background-position: 0 100%;
   background-repeat: repeat-x;
-  background-size: 3px 3px;
+  background-size: 2px 2px;
   color: var(--text-hover-color);
   text-decoration: none;
-  font-weight: bold;
 }
 
 .article-container a:hover {
@@ -79,7 +99,7 @@ h2.title {
 }
 
 .article-container blockquote {
-  margin: 1.5em 10px;
+  margin: 3em 10px;
   padding: 0.5em 10px;
   quotes: "\201C""\201D""\2018""\2019";
   font-family: "Merriweather";
@@ -94,29 +114,44 @@ h2.title {
   line-height: 0.1em;
   margin-right: 0.25em;
   vertical-align: -0.4em;
+  z-index: 2;
 }
 
 .article-container blockquote:after {
   color: var(--shadow);
   content: close-quote;
   font-size: 4em;
+
   line-height: 0.1em;
   vertical-align: -0.6em;
+  z-index: 2;
 }
 
 .article-container blockquote p {
   display: inline;
 }
 
+.article-container blockquote p strong {
+  color: var(--dark-shadow);
+  position: relative;
+  float: right;
+  margin: 2vw 0 0 0;
+  font-style: normal;
+  font-family: "Lato";
+  font-weight: 400;
+  font-size: 0.5em;
+}
+
 .article-container ul li {
   font-family: "Merriweather";
 }
 
-.article-container h3 {
+.article-container h3,
+h2 {
   font-family: "Lato";
   font-size: 3vw;
-  /* text-shadow: 0.07em 0.05em 0 var(--shadow); */
-
+  margin: 2vw auto;
+  text-shadow: 0.07em 0.05em 0 var(--shadow);
   color: var(--dark-text-color);
 }
 
@@ -135,8 +170,8 @@ h2.title {
 }
 
 .author-date {
-  font-size: 0.7vw;
-  font-weight: 200;
+  font-size: 1vw;
+  font-weight: 100;
   letter-spacing: 0.1vw;
   color: var(--light-text-color);
   margin-bottom: 4vw;
@@ -177,8 +212,8 @@ h2.title {
 .article-container h3.sign-name:before {
   content: "";
   display: block;
-  padding-top: 4vw; /* header height + empty space */
-  margin-top: -5vw; /* header height to degrees padding’s space */
+  padding-top: 8vw; /* header height + empty space */
+  margin-top: -7vw; /* header height to degrees padding’s space */
 }
 
 /* quick access bar */
@@ -195,7 +230,7 @@ h2.title {
 }
 
 .quick-access-bar li {
-  max-width: 8vw;
+  width: 8vw;
   padding: 2vw 1vw 0 1vw;
 }
 
@@ -205,7 +240,7 @@ h2.title {
 
 @media screen and (max-width: 500px) {
   .header {
-    max-height: 60vw;
+    height: 25vh;
   }
 
   .article-container {
@@ -227,7 +262,7 @@ h2.title {
 
   .article-container img {
     max-width: 90vw;
-    margin: 3vw auto;
+    margin: 6vh auto;
     display: flex;
     flex-wrap: wrap;
   }
@@ -240,7 +275,7 @@ h2.title {
   }
 
   .article-container blockquote {
-    margin: 1.5em 10px;
+    margin: 4em 10px 6em 10px;
     padding: 0.5em 10px;
     quotes: "\201C""\201D""\2018""\2019";
     font-family: "Merriweather";
@@ -265,6 +300,9 @@ h2.title {
     vertical-align: -0.6em;
   }
 
+  .article-container blockquote p strong {
+    font-size: 0.8em;
+  }
   .author-date {
     font-size: 3.5vw;
     font-weight: 200;
@@ -283,7 +321,7 @@ h2.title {
   }
 
   .quick-access-bar li {
-    max-width: 13vw;
+    width: 13vw;
     padding-top: 4vw;
   }
 
@@ -295,6 +333,6 @@ h2.title {
     content: "";
     display: block;
     padding-top: 12vw; /* header height + empty space */
-    margin-top: -14vw; /* header height to degrees padding’s space */
+    margin-top: -4vw; /* header height to degrees padding’s space */
   }
 }

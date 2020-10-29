@@ -1,8 +1,27 @@
+.search-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: inherit;
+}
+
+.search-container h2 {
+  margin-left: 0;
+}
+
+/* search page only */
+
+.search-page-container {
+  display: flex;
+  width: 80vw;
+  margin: auto;
+}
+
 .search-box {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: center;
+  justify-content: left;
   align-content: center;
   margin-top: 2vw;
 }
@@ -23,7 +42,15 @@
 
 .search-entry {
   box-shadow: 0px 3px 5px -5px rgba(0, 0, 0, 0.9);
-  margin-top: 2vw;
+  border-radius: 0.6vw;
+  display: flex;
+  border: 1px solid rgba(0, 0, 0, 0);
+  margin: 2vw 0 0 0;
+  padding: 1vw;
+  width: 100%;
+  text-overflow: clip;
+  overflow: hidden;
+  transition: all 0.5s ease-in;
 }
 
 .search-entry a {
@@ -31,6 +58,21 @@
   color: black;
 }
 
+.search-entry:hover {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.search-entry:hover a,
+.search-entry:hover h3 {
+  color: var(--text-hover-color);
+}
+
+.search-entry .gatsby-image-wrapper {
+  transition: transform 0.2s ease-in;
+}
+
+.search-entry:hover .gatsby-image-wrapper {
+  transform: scale(1.05);
+}
 .search-thumb {
   height: 5vw;
   width: 5vw;
@@ -43,6 +85,7 @@
 ul.search-results {
   list-style-type: none;
   margin-top: 2vw;
+  padding: 0;
 }
 
 .search-results h4 {
@@ -57,7 +100,6 @@ ul.search-results {
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
-  min-width: 26vw;
   font-weight: 800;
   line-height: 1.5em;
   text-decoration: none;
@@ -66,13 +108,12 @@ ul.search-results {
 
 .entryTitle h3 {
   margin-left: 1vw;
+  font-size: 1.2em;
+  width: inherit;
+  text-overflow: ellipsis;
 }
 .entryTitle:active {
   color: black;
-}
-
-.entryTitle:hover {
-  color: var(--text-hover-color);
 }
 
 .entryContent {
@@ -81,8 +122,6 @@ ul.search-results {
   overflow: hidden;
   flex-wrap: nowrap;
   white-space: normal;
-  min-width: 24vw;
-  max-width: 50vw;
   padding: 1vw;
   margin: auto;
   line-height: 1.5;
@@ -125,6 +164,80 @@ ul.search-results {
   border: none;
 }
 
+.more-results {
+  font-family: "Lato";
+  position: relative;
+  display: block;
+  font-weight: 300;
+  margin: 1vw auto;
+  text-align: center;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.more-results,
+.more-results:visited,
+.more-results:active {
+  text-decoration: none;
+  background: linear-gradient(
+    to bottom,
+    var(--text-hover-color) 0%,
+    var(--text-hover-color) 100%
+  );
+  background-position: 0% 100%;
+  background-repeat: repeat-x;
+  background-size: 2px 1.5px;
+  color: var(--text-hover-color);
+}
+
+.more-results:hover {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='squiggle-link' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.squiggle{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}%3C/style%3E%3Cpath fill='none' stroke='%23843b8c' stroke-width='2' class='squiggle' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
+  background-position: 0 102%;
+  background-size: auto 4px;
+  background-repeat: repeat-x;
+  text-decoration: none;
+  box-shadow: none;
+}
+
+@keyframes flipInX {
+  from {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+
+  to {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px);
+  }
+}
+.animate__flipInX {
+  -webkit-backface-visibility: visible !important;
+  backface-visibility: visible !important;
+  -webkit-animation-name: flipInX;
+  animation-name: flipInX;
+}
+
 @media screen and (max-width: 500px) {
   .search-box {
     display: none;
@@ -157,7 +270,7 @@ ul.search-results {
 
   .nav-search-box input:focus {
     border-bottom-color: var(--border-color);
-    outline: none;
+    outline: 0;
   }
 
   .nav-search-icon {

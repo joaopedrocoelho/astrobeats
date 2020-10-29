@@ -21,7 +21,7 @@ export default props => {
       author={props.pageContext.author.name}
       category={props.pageContext.categories}
       date={props.pageContext.created_at}
-      cover={props.pageContext.cover.publicURL}
+      cover={props.pageContext.cover.childImageSharp.fluid}
     />
   )
 }

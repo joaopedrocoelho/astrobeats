@@ -9,8 +9,10 @@ html {
 :root {
   --border-color: #df5ee8;
   --text-highlight-color: #d193ff;
-  --text-hover-color: #843b8c;
+  --text-hover-color: #723379;
+  --dark-shade: #512357;
   --shadow: #a4c7c9;
+  --dark-shadow: #667b7c;
   --underline: #ffde4c;
   --lighter-text-color: #e6e6e6;
   --light-text-color: #3b3b3b;
@@ -32,16 +34,33 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  height: auto;
 }
 
 .main-column {
-  margin-left: 8vw;
+  margin: auto;
 }
 
 .side-column {
   margin: 4vw auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
   align-content: flex-start;
-  width: 30vw;
+  width: 20vw;
+  height: auto;
+}
+
+.side-column hr {
+  border: 0;
+  border-top: 2px solid var(--text-hover-color);
+  height: 4px;
+}
+
+.side-column h2 {
+  font-family: "Lato";
+  font-size: 1.5vw;
+  margin-top: 0;
 }
 .scale-down {
   transform: translate3d(80% 0% 30%);
@@ -127,12 +146,13 @@ footer .footer-menu-list {
   text-decoration: underline;
 }
 
-.scroll-top-btn {
-  border-width: 0;
+.loading-bar {
+  width: 2vw;
+  height: 2vw;
 }
 
-.scroll-top-btn:hover {
-  background-color: blue;
+.mobile-about {
+  display: none;
 }
 
 @media screen and (max-width: 600px) {
@@ -176,5 +196,73 @@ footer .footer-menu-list {
 
   .main-column {
     margin: auto;
+  }
+
+  .side-column {
+    display: none;
+  }
+
+  /*about author mobile */
+  .mobile-about {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin: 8vh auto;
+  }
+  .author-mobile-info .gatsby-image-wrapper {
+    width: 100%;
+    max-width: 20vw;
+    max-height: 20vw;
+    border-radius: 50%;
+    margin: 2vw 0;
+  }
+
+  h3.about-mobile-header {
+    font-family: "Lato";
+    display: flex;
+    position: relative;
+    align-self: center;
+    flex-wrap: wrap;
+    font-weight: 900;
+    text-align: left;
+    font-size: 2em;
+    padding-left: 0.7em;
+    margin: 0;
+    color: white;
+  }
+
+  .author-mobile-info {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 100%;
+  }
+
+  .about-author-mobile-text {
+    font-family: "Merriweather";
+    font-weight: 300;
+    font-size: 1em;
+    padding: 0;
+    line-height: 2;
+    letter-spacing: 1px;
+    display: flex;
+    flex-direction: column;
+    flex-flow: wrap;
+    color: white;
+  }
+
+  .about-author-mobile-text p:first-child {
+    margin-top: 0;
+  }
+  .about-author-mobile-text p {
+    padding: 0 10%;
+  }
+  #about-mobile {
+    position: relative;
+    top: -10vw;
+    height: 0;
+    width: 100%;
+    background: red;
   }
 }

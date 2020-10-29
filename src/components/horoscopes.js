@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import Img from "gatsby-image"
 import Layout from "./layout"
 import QuickAccessBar from "./sign-quick-access-bar"
 
@@ -44,7 +45,7 @@ const Horoscopes = ({
   return (
     <Layout heroIsVisible={false}>
       <div className="header">
-        <img src={cover} />
+        <Img fluid={cover} alt="header" />
       </div>
       <div className="main-column">
         <h2 className="title shadow">{title}</h2>

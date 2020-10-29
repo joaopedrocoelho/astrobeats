@@ -1,0 +1,97 @@
+.pagination {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-self: center;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 3vw;
+  font-family: "Lato";
+}
+
+.pagination a {
+  color: var(--text-hover-color);
+  text-decoration: none;
+}
+
+.pagination a:hover {
+  text-decoration: underline;
+}
+
+.pagination a:visited {
+  color: var(--dark-text-color);
+}
+
+.pagination a.pag-button {
+  width: 6vw;
+  height: 3vw;
+  font-family: "Lato";
+  border-style: solid;
+  position: relative;
+  display: inline-flex;
+  border-width: 0em;
+  border-radius: 0.4em;
+  box-sizing: border-box;
+  border-color: var(--text-highlight-color);
+  transition: all 0.15s ease-out;
+  box-shadow: 0em 0.3em 0 var(--text-highlight-color);
+  background-color: var(--text-hover-color);
+  color: white;
+  text-decoration: none;
+  margin: auto 0;
+  font-size: 1.1em;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination a.pag-button:hover {
+  background-color: #005197;
+}
+
+.pagination a.pag-button:active {
+  transform: translate(0, 0.4em);
+  outline: none;
+  box-shadow: 0em 0em 0 var(--text-highlight-color);
+}
+
+.disabled-link {
+  visibility: hidden;
+  pointer-events: none;
+  text-decoration: none;
+  opacity: 0.7;
+}
+
+.highlight {
+  color: white !important;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 1.5em;
+  height: 1.5em;
+  font-weight: bold;
+  font-size: 1.5em;
+  border-radius: 50%;
+  background-color: var(--text-hover-color);
+  text-decoration: none;
+  text-align: center;
+  pointer-events: none;
+}
+
+@media screen and (max-width: 600px) {
+  .pagination {
+    height: 10vw;
+    width: 100%;
+    margin: 5vh auto;
+  }
+  .pagination a.pag-button {
+    width: 19vw;
+    height: 10vw;
+    font-size: 1em;
+    border-width: 0em;
+    border-radius: 0.5em;
+  }
+}

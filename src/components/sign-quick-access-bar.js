@@ -1,5 +1,4 @@
 import React from "react"
-import { AnchorLink } from "gatsby-plugin-anchor-links"
 import { Link } from "gatsby"
 
 import AriesGlyph from "../../assets/sign-glyph/aries.svg"

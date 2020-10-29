@@ -5,34 +5,44 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+import React, { Suspense } from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
 
 import Nav from "./nav"
 import Hero from "./hero"
-import SearchFuse from "../components/search-sidecolumn"
+import AboutMe from "../components/about-author"
+import ScrollTopBtn from "../components/scroll-to-top"
 import Footer from "./footer"
-import { IoIosArrowDropupCircle } from "react-icons/io"
+
+import LoadingBar from "../../assets/loading_bar.svg"
 import "./styles/fonts.css"
 import "./style.css"
+
+const SearchFuse = React.lazy(() => import("../components/search-sidecolumn"))
 
 const Layout = ({
   children,
   forwardedRef,
   heroIsVisible,
+  sidebarisVisible = true,
   searchSidebarisVisible,
 }) => {
+  const offsetNav = { marginTop: 5 + "vw" }
   return (
     <div id="container">
       <Nav />
       <Hero isVisible={heroIsVisible} />
-
-      <div className="columns">
+      <ScrollTopBtn />
+      <div className="columns" style={!heroIsVisible && offsetNav}>
         {children}
-        <div className="side-column">
-          <SearchFuse isVisible={searchSidebarisVisible} />
-        </div>
+        {sidebarisVisible && (
+          <div className="side-column">
+            <Suspense fallback={<LoadingBar className="loading-bar" />}>
+              <SearchFuse isVisible={searchSidebarisVisible} />
+              <AboutMe />
+            </Suspense>
+          </div>
+        )}
       </div>
 
       <Footer forwardedRef={forwardedRef} />

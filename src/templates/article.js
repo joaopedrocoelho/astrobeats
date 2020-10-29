@@ -1,6 +1,6 @@
 import React from "react"
 import Article from "../components/article"
-import { Link } from "gatsby"
+
 export default props => {
   return (
     <Article
@@ -9,7 +9,7 @@ export default props => {
       author={props.pageContext.author.name}
       category={props.pageContext.categories}
       date={props.pageContext.created_at}
-      cover={props.pageContext.cover.publicURL}
+      cover={props.pageContext.cover.childImageSharp.fluid}
     />
   )
 }

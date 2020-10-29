@@ -1,7 +1,8 @@
 import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
-import ReactDOM from "react-dom"
+import React, { useEffect, useState, useRef } from "react"
+
+import Burger from "@animated-burgers/burger-slip"
+import "@animated-burgers/burger-slip/dist/styles.css"
 
 import SearchNav from "./search-nav"
 
@@ -11,13 +12,20 @@ import "./style.css"
 import "./styles/nav.css"
 import "./styles/hamburgers.css"
 
-class Nav extends React.Component {
-  componentDidMount() {
+const Nav = () => {
+  const offCanvasMenu = useRef(null)
+  const [isopen, setIsopen] = useState(false)
+  const mobile = window.matchMedia("(max-width: 600px)")
+  //hamburger menu
+  function toggleMenu() {
+    offCanvasMenu.current.classList.toggle("is-open")
+  }
+
+  useEffect(() => {
+    //code for making the bg color disappear if there's a hero
     const nav = document.querySelector(".menu-container")
     const logo = document.querySelector(".site-name")
-    const hamburgerBtn = this.hamburger
-    const offCanvasMenu = this.menu
-    const pageContainer = document.getElementById("container")
+
     const hero = document.getElementById("hero")
     if (hero != null) {
       nav.classList.add("transparent")
@@ -32,77 +40,59 @@ class Nav extends React.Component {
         }
       })
     }
-    function toggleMenu() {
-      offCanvasMenu.classList.toggle("is-open")
-      pageContainer.classList.toggle("scale-down")
-      hamburgerBtn.classList.toggle("is-active")
+  }, [])
 
-      // Do something else, like open/close menu
-    }
-    //on enter key
-    document.addEventListener("keyup", function (event) {
-      if (
-        offCanvasMenu.classList.contains("is-open") &&
-        event.key === "Enter"
-      ) {
-        // Toggle class "is-active"
-        toggleMenu()
-        console.log("oi")
-      }
-    })
+  return (
+    <>
+      <nav className="menu-container" id="nav">
+        <Link to="/" className="logo-link">
+          <img
+            src={LogoImg}
+            alt="astrobeats - accesible astrology"
+            className="site-name"
+            id="siteName"
+          />
+        </Link>
+        <Burger
+          onClick={() => {
+            setIsopen(!isopen)
+            toggleMenu()
+          }}
+          Component="button"
+          type="button"
+          isOpen={isopen}
+          className={isopen ? "bigger" : ""}
+        />
 
-    // On click
-    hamburgerBtn.addEventListener("click", function () {
-      // Toggle class "is-active"
-      toggleMenu()
-    })
-  }
-
-  render() {
-    return (
-      <>
-        <nav className="menu-container" id="nav">
-          <Link to="/" className="logo-link">
-            <img
-              src={LogoImg}
-              alt="astrobeats - accesible astrology"
-              className="site-name"
-              id="siteName"
-              x
-            />
-          </Link>
-          <button
-            ref={ref => (this.hamburger = ref)}
-            data-function="swipe"
-            id="swipe"
-            className="hamburger hamburger--vortex"
-            type="button"
-          >
-            <span className="hamburger-box">
-              <span className="hamburger-inner"></span>
-            </span>
-          </button>
-          <ul className="menu-list" ref={ref => (this.menu = ref)}>
-            <li className="menu-item hover-animation">
-              <Link to="/">blog</Link>
-            </li>
-            <li className="menu-item hover-animation">
-              <Link to="/horoscopes">horoscopes</Link>
-            </li>
-            <li className="menu-item hover-animation">
-              <Link to="/consultations">consultations</Link>
-            </li>
-            <li className="menu-item hover-animation">
-              <Link to="/about">about</Link>
-            </li>
-            <li className="menu-item">
-              <SearchNav />
-            </li>
-          </ul>
-        </nav>
-      </>
-    )
-  }
+        <ul className="menu-list" ref={offCanvasMenu}>
+          <li className="menu-item hover-animation">
+            <Link to="/">blog</Link>
+          </li>
+          <li className="menu-item hover-animation">
+            <Link to="/category/Horoscopes">horoscopes</Link>
+          </li>
+          <li className="menu-item hover-animation">
+            <Link to="/consultations">consultations</Link>
+          </li>
+          <li className="menu-item hover-animation">
+            <Link
+              to={mobile.matches ? "#about-mobile" : "#about"}
+              className="about-author-open"
+              onClick={() => {
+                setIsopen(!isopen)
+                toggleMenu()
+              }}
+            >
+              about
+            </Link>
+          </li>
+          <li className="menu-item">
+            <SearchNav />
+          </li>
+        </ul>
+      </nav>
+    </>
+  )
 }
 
 export default Nav
