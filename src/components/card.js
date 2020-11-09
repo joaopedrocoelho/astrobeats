@@ -8,6 +8,8 @@ import dateIcon from "../images/date_icon.png"
 
 import "./styles/card.css"
 
+var window = require("global/window")
+
 const Card = ({
   id,
   title,

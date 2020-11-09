@@ -9,7 +9,6 @@ import Pagination from "../components/pagination"
 const Card = React.lazy(() => import("../components/card"))
 
 const IndexPage = ({ data }) => {
-  console.log("IndexPage.render data", data)
   const [currentIndex, setIndex] = useState(3)
 
   const element = useRef(null)
@@ -18,7 +17,7 @@ const IndexPage = ({ data }) => {
     new IntersectionObserver(
       entries => {
         const first = entries[0]
-        console.log("first", first)
+
         if (first.isIntersecting && currentIndex <= 5) {
           setIndex(currentIndex + 3)
         }

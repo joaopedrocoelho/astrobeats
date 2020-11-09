@@ -17,7 +17,7 @@ const IndexPage = ({ data }) => {
     new IntersectionObserver(
       entries => {
         const first = entries[0]
-        console.log("first", first)
+
         if (first.isIntersecting && currentIndex <= 5) {
           setIndex(currentIndex + 3)
         }
@@ -27,8 +27,6 @@ const IndexPage = ({ data }) => {
   )
 
   useEffect(() => {
-    console.log("element", element)
-
     const currentObserver = observer.current
     const currentElement = element.current
     if (currentElement) {

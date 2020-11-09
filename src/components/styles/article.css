@@ -268,7 +268,7 @@ h2 {
   }
 
   .article-container h3 {
-    font-size: 9vw;
+    font-size: 8vw;
     /* text-shadow: 0.07em 0.05em 0 var(--shadow); */
 
     color: var(--dark-text-color);

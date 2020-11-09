@@ -21,6 +21,7 @@
   border: 0;
   z-index: 999;
   overflow: visible;
+  outline: 0;
 }
 
 @media screen and (max-width: 600px) {

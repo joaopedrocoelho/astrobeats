@@ -6,6 +6,8 @@ import React from "react"
 import "./style.css"
 import "./styles/hero.css"
 
+var window = require("global/window")
+
 const Hero = ({ isVisible = true }) => {
   const logoImg = useStaticQuery(graphql`
     query logoImg {

@@ -7,10 +7,12 @@ import SEO from "../components/seo"
 import Card from "../components/card"
 import Pagination from "../components/pagination"
 
-const currentURL = window.location.pathname.split("/")
+var window = require("global/window")
+
+const currentURL =
+  typeof window !== `undefined` ? window.location.pathname.split("/") : null
 
 const CategoriesPage = ({ title = currentURL[2], data }) => {
-  console.log("categories data", data)
   return (
     <div>
       <Layout heroIsVisible={false}>

@@ -1,6 +1,3 @@
-html {
-}
-
 .article-container {
   display: flex;
   flex-direction: column;
@@ -18,6 +15,14 @@ form.user-data {
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
+}
+
+span.MuiButton-label h2.MuiTypography-h2 {
+  text-shadow: none !important;
+}
+
+h2.MuiPickersTimePickerToolbar-separator {
+  text-shadow: none !important;
 }
 
 .user-data span.section {
@@ -216,4 +221,77 @@ input[type="radio"]:checked + label {
   font-size: 2vw;
   color: var(--text-hover-color);
   font-weight: 600;
+}
+
+@media screen and (max-width: 600px) {
+  .user-data span.section {
+    flex-direction: column;
+    width: 100%;
+    flex-wrap: nowrap;
+  }
+
+  .user-data label.input-label {
+    font-size: 6vw;
+  }
+
+  .user-data input.form-input {
+    height: 10vw;
+    font-size: 1em;
+  }
+
+  .MuiInputBase-input .MuiInput-input {
+    height: 10vw !important;
+  }
+
+  .unknown-time {
+    font-weight: 400 !important;
+    font-size: 1em !important;
+  }
+
+  #unknown-time {
+    transform: scale(2);
+    width: 7vw;
+    outline: 0;
+  }
+
+  .ap-input {
+    height: 11vw;
+  }
+
+  time {
+    font-size: 1.5em !important;
+  }
+
+  .hour-btn {
+    border-width: 0vw;
+    border-radius: 3vw;
+    padding: 3vw 3vw;
+    margin: 3vw 3vw;
+    justify-content: center;
+    align-items: center;
+    width: 42%;
+    height: 13vh;
+    color: white;
+    font-size: 0.8em;
+  }
+
+  .hour-btn[title]::before {
+    font-size: 0.7em;
+    left: 15px;
+  }
+
+  .hour-btn:hover {
+    background-color: #005197;
+  }
+
+  .hour-btn:active {
+    transform: translate(0, 0.4em);
+    outline: none;
+    box-shadow: 0em 0em 0 var(--text-highlight-color);
+  }
+
+  .user-data button.hour-btn {
+    font-size: 1.2em;
+    margin: 7vh auto 3vh auto;
+  }
 }

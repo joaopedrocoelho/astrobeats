@@ -6,9 +6,9 @@ const mapPagesUrls = {
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `astrobeats`,
+    description: `astrology blog, horoscopes, mundane, historical astrology, birth chart consultations.`,
+    author: `Pedro Coelho`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

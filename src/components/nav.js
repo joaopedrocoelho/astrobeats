@@ -12,10 +12,17 @@ import "./style.css"
 import "./styles/nav.css"
 import "./styles/hamburgers.css"
 
+var window = require("global/window")
+
 const Nav = () => {
   const offCanvasMenu = useRef(null)
   const [isopen, setIsopen] = useState(false)
-  const mobile = window.matchMedia("(max-width: 600px)")
+  const [aboutLink, setAboutLink] = useState("#about-mobile")
+
+  useEffect(() => {
+    let mobile = window.matchMedia("(max-width: 600px)")
+    mobile.matches ? setAboutLink("#about-mobile") : setAboutLink("#about")
+  }, [])
   //hamburger menu
   function toggleMenu() {
     offCanvasMenu.current.classList.toggle("is-open")
@@ -76,7 +83,7 @@ const Nav = () => {
           </li>
           <li className="menu-item hover-animation">
             <Link
-              to={mobile.matches ? "#about-mobile" : "#about"}
+              to={aboutLink}
               className="about-author-open"
               onClick={() => {
                 setIsopen(!isopen)

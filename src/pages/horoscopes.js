@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql } from "gatsby"
 import Img from "gatsby-image"
 
 import Layout from "../components/layout"
@@ -8,7 +8,6 @@ import Card from "../components/card"
 import Pagination from "../components/pagination"
 
 const HoroscopesPage = ({ title = "Horoscopes", data }) => {
-  console.log("Horoscopes data", data)
   return (
     <div>
       <Layout heroIsVisible={false}>

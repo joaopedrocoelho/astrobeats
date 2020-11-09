@@ -18,7 +18,6 @@ const Booking = React.lazy(() => import("../components/booking"))
 //import Booking from "../components/booking"
 
 const ConsultationsPage = ({ title = "Consultations", data }) => {
-  console.log("consultations data", data)
   return (
     <Layout heroIsVisible={false}>
       <SEO title={title} />

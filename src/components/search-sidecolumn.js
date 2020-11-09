@@ -10,6 +10,8 @@ import { IconContext } from "react-icons"
 import LinesEllipsis from "react-lines-ellipsis"
 import symbolImg from "../images/2x/purple_logo@2x.png"
 
+var window = require("global/window")
+
 const SearchFuse = ({ isVisible = true, searchQuery }) => {
   // Hooks
   const [term, setTerm] = useState("")
@@ -20,7 +22,7 @@ const SearchFuse = ({ isVisible = true, searchQuery }) => {
   useEffect(() => {
     //setTimeout to avoid rendering results while user is typing
     const currentPage = window.location.pathname.split("/")
-    console.log("currentPage", currentPage)
+
     const timeoutId = setTimeout(() => {
       if (term || searchQuery) {
         if (currentPage[1] !== "search" && searchResults.length > 5) {
@@ -69,7 +71,6 @@ const SearchFuse = ({ isVisible = true, searchQuery }) => {
       }
     }, 500)
 
-    console.log("new results", searchResults)
     //cleanup function cancels settimeout
     return () => {
       clearTimeout(timeoutId)

@@ -11,6 +11,8 @@ import InstagramIcon from "../../assets/instagram.svg"
 
 import "./style.css"
 
+var window = require("global/window")
+
 const Footer = ({ forwardedRef }) => {
   const data = useStaticQuery(graphql`
     query allAuthorsMobile {

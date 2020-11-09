@@ -5,7 +5,6 @@ import Layout from "../components/layout"
 import AboutMe from "../components/about-author-no-button"
 
 const About = ({ data }) => {
-  console.log("About data", data)
   return (
     <Layout>
       <div className="header"></div>

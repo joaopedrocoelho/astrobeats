@@ -4,6 +4,8 @@ import { IoIosArrowDropupCircle } from "react-icons/io"
 import { IconContext } from "react-icons"
 import "./styles/scroll-to-top.css"
 
+var window = require("global/window")
+
 const ScrollTopBtn = () => {
   const [visibility, setVisibility] = useState(false)
   const [scrollTop, setScrollTop] = useState(window.pageYOffset)
