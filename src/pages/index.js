@@ -13,8 +13,8 @@ const IndexPage = ({ data }) => {
 
   const element = useRef(null)
 
-  const observer = useRef(
-    new IntersectionObserver(
+  useEffect(() => {
+    const observer = new IntersectionObserver(
       entries => {
         const first = entries[0]
 
@@ -24,50 +24,52 @@ const IndexPage = ({ data }) => {
       },
       { threshold: 0.2 }
     )
-  )
-
-  useEffect(() => {
-    const currentObserver = observer.current
     const currentElement = element.current
     if (currentElement) {
-      currentObserver.observe(currentElement)
+      observer.observe(currentElement)
     }
 
     return () => {
       if (currentElement) {
-        currentObserver.unobserve(currentElement)
+        observer.unobserve(currentElement)
       }
     }
   }, [])
 
-  return (
-    <div>
-      <Layout forwardedRef={element}>
-        <SEO title="Home" />
+  const isSSR = typeof window === "undefined"
 
-        <div className="article-cards">
-          {data.allStrapiArticle.nodes
-            .slice(0, currentIndex)
-            .map((article, index, cards) => {
-              return (
-                <Suspense fallback={<LoadingBar />}>
-                  <Card
-                    id={article.id}
-                    title={article.title}
-                    category={article.categories}
-                    author={article.author.name}
-                    content={article.content}
-                    imgUrl={article.cover.childImageSharp.fluid}
-                    date={article.created_at}
-                    slug={article.slug}
-                  />
-                </Suspense>
-              )
-            })}
-          <Pagination totalCount={data.allStrapiArticle.totalCount} />
+  return (
+    <>
+      {!isSSR && (
+        <div>
+          <Layout forwardedRef={element}>
+            <SEO title="Home" />
+
+            <div className="article-cards">
+              {data.allStrapiArticle.nodes
+                .slice(0, currentIndex)
+                .map((article, index, cards) => {
+                  return (
+                    <Suspense fallback={<LoadingBar />}>
+                      <Card
+                        id={article.id}
+                        title={article.title}
+                        category={article.categories}
+                        author={article.author.name}
+                        content={article.content}
+                        imgUrl={article.cover.childImageSharp.fluid}
+                        date={article.created_at}
+                        slug={article.slug}
+                      />
+                    </Suspense>
+                  )
+                })}
+              <Pagination totalCount={data.allStrapiArticle.totalCount} />
+            </div>
+          </Layout>
         </div>
-      </Layout>
-    </div>
+      )}
+    </>
   )
 }
 

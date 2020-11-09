@@ -10,7 +10,11 @@ const ScrollTopBtn = () => {
   const [visibility, setVisibility] = useState(false)
   const [scrollTop, setScrollTop] = useState(window.pageYOffset)
   const button = useRef()
-  const mobile = window.matchMedia("(max-width: 500px)")
+  let mobile = true
+
+  useEffect(() => {
+    mobile = window.matchMedia("(max-width: 500px)")
+  }, [])
 
   useEffect(() => {
     function onScroll() {

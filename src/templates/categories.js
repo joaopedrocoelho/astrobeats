@@ -7,12 +7,8 @@ import SEO from "../components/seo"
 import Card from "../components/card"
 import Pagination from "../components/pagination"
 
-var window = require("global/window")
-
-const currentURL =
-  typeof window !== `undefined` ? window.location.pathname.split("/") : null
-
-const CategoriesPage = ({ title = currentURL[2], data }) => {
+const CategoriesPage = ({ title, data }) => {
+  title = data.allStrapiArticle.nodes.categories
   return (
     <div>
       <Layout heroIsVisible={false}>

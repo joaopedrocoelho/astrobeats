@@ -1,7 +1,7 @@
 import { Link, graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 
-import React from "react"
+import React, { useEffect } from "react"
 
 import "./style.css"
 import "./styles/hero.css"
@@ -24,7 +24,6 @@ const Hero = ({ isVisible = true }) => {
       }
     }
   `)
-  const mobile = window.matchMedia("(max-width: 600px)")
 
   return isVisible ? (
     <div className="hero" id="hero">
@@ -35,11 +34,20 @@ const Hero = ({ isVisible = true }) => {
         </Link>
 
         <p>accesible astrology</p>
-        <Link to={mobile.matches ? "#about-mobile" : "#about"}>
+        <Link to={"#about-mobile"}>
           <button
             type="button"
             value="ABOUT"
-            className="abt-btn about-author-open"
+            className="abt-btn about-author-open mobile"
+          >
+            About
+          </button>
+        </Link>
+        <Link to={"#about"}>
+          <button
+            type="button"
+            value="ABOUT"
+            className="abt-btn about-author-open desktop"
           >
             About
           </button>

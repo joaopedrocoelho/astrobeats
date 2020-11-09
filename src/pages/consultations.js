@@ -15,27 +15,33 @@ const ConsultationText = React.lazy(() =>
   import("../components/consultations-text")
 )
 const Booking = React.lazy(() => import("../components/booking"))
-//import Booking from "../components/booking"
 
 const ConsultationsPage = ({ title = "Consultations", data }) => {
+  const isSSR = typeof window === "undefined"
+
   return (
-    <Layout heroIsVisible={false}>
-      <SEO title={title} />
-      <div className="header">
-        <Img fluid={data.image.childImageSharp.fluid} />
-      </div>
-      <div className="main-column">
-        <h2 className="title shadow">{title}</h2>
-        <div className="article-container">
-          <Suspense fallback={<LoadingBar />}>
-            <ConsultationText />
-          </Suspense>
-          <Suspense fallback={<LoadingBar />}>
-            <Booking />
-          </Suspense>
-        </div>
-      </div>
-    </Layout>
+    <>
+      {!isSSR && (
+        <Layout heroIsVisible={false}>
+          <SEO title={title} />
+          <div className="header">
+            <Img fluid={data.image.childImageSharp.fluid} />
+          </div>
+          <div className="main-column">
+            <h2 className="title shadow">{title}</h2>
+            <div className="article-container">
+              <Suspense fallback={<LoadingBar />}>
+                <ConsultationText />
+              </Suspense>
+              <Suspense fallback={<LoadingBar />}>
+                <Booking />
+              </Suspense>{" "}
+              */
+            </div>
+          </div>
+        </Layout>
+      )}
+    </>
   )
 }
 

@@ -28,25 +28,31 @@ const Layout = ({
   searchSidebarisVisible,
 }) => {
   const offsetNav = { marginTop: 5 + "vw" }
-  return (
-    <div id="container">
-      <Nav />
-      <Hero isVisible={heroIsVisible} />
-      <ScrollTopBtn />
-      <div className="columns" style={!heroIsVisible && offsetNav}>
-        {children}
-        {sidebarisVisible && (
-          <div className="side-column">
-            <Suspense fallback={<LoadingBar className="loading-bar" />}>
-              <SearchFuse isVisible={searchSidebarisVisible} />
-              <AboutMe />
-            </Suspense>
-          </div>
-        )}
-      </div>
+  const isSSR = typeof window === "undefined"
 
-      <Footer forwardedRef={forwardedRef} />
-    </div>
+  return (
+    <>
+      {!isSSR && (
+        <div id="container">
+          <Nav />
+          <Hero isVisible={heroIsVisible} />
+          <ScrollTopBtn />
+          <div className="columns" style={!heroIsVisible && offsetNav}>
+            {children}
+            {sidebarisVisible && (
+              <div className="side-column">
+                <Suspense fallback={<LoadingBar className="loading-bar" />}>
+                  <SearchFuse isVisible={searchSidebarisVisible} />
+                  <AboutMe />
+                </Suspense>
+              </div>
+            )}
+          </div>
+
+          <Footer forwardedRef={forwardedRef} />
+        </div>
+      )}
+    </>
   )
 }
 

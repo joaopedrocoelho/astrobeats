@@ -1,6 +1,6 @@
 import { Link, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
-import React from "react"
+import React, { useEffect } from "react"
 import ReactMarkdown from "react-markdown"
 
 import SearchNav from "./search-nav"
@@ -34,7 +34,12 @@ const Footer = ({ forwardedRef }) => {
     }
   `)
 
-  const mobile = window.matchMedia("(max-width: 600px)")
+  let mobile = true
+
+  useEffect(() => {
+    mobile = window.matchMedia("(max-width: 500px)")
+  }, [])
+
   return (
     <footer ref={forwardedRef}>
       <div className="footer-logo-container">
@@ -51,10 +56,10 @@ const Footer = ({ forwardedRef }) => {
           <Link to="/consultations">consultations</Link>
         </li>
         <li className="footer-menu-item hover-animation">
-          <Link
-            to={mobile.matches ? "#about-mobile" : "#about"}
-            className="about-author-open"
-          >
+          <Link to={"#about-mobile"} className="about-author-open mobile">
+            about
+          </Link>
+          <Link to={"#about"} className="about-author-open  desktop">
             about
           </Link>
         </li>

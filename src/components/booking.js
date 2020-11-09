@@ -18,7 +18,6 @@ import utc from "dayjs/plugin/utc"
 import timezone from "dayjs/plugin/timezone"
 import CustomParseFormat from "dayjs/plugin/CustomParseFormat"
 import isBetween from "dayjs/plugin/isBetween"
-import { nominalTypeHack } from "prop-types"
 
 dayjs.extend(duration)
 dayjs.extend(utc)

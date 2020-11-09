@@ -8,7 +8,7 @@ const Search = ({ location }) => {
   return (
     <Layout sidebarisVisible={false}>
       <div className="search-page-container">
-        <SearchFuse searchQuery={location.state.term} />
+        <SearchFuse searchQuery={location.state ? location.state.term : ""} />
       </div>
     </Layout>
   )
