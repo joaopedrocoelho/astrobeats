@@ -65,18 +65,7 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: `@draftbox-co/gatsby-plugin-fusejs`,
-      options: {
-        fields: [`title`, `slug`],
-        resolvers: {
-          allSitePage: {
-            title: node => node.title,
-            slug: node => node.slug,
-          },
-        },
-      },
-    },
+
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
