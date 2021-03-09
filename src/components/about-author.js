@@ -12,14 +12,15 @@ const AboutMe = ({ author, avatar, header, text }) => {
   const [clicked, showText] = useState(false)
 
   useEffect(() => {
-    document.addEventListener("click", function (e) {
+    const clickFunction = function (e) {
       // e.target is the clicked element!
       // If it was an item with class 'foo'
       if (e.target && e.target.classList.contains("about-author-open"))
         showText(true)
-    })
+    }
+    document.addEventListener("click", clickFunction)
     return () => {
-      document.removeEventListener("click")
+      document.removeEventListener("click", clickFunction)
     }
   })
 
