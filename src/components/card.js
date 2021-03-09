@@ -4,6 +4,9 @@ import React from "react"
 import ReactMarkdownWithHtml from "react-markdown/with-html"
 import Fade from "react-reveal/Fade"
 
+import { BsChevronDoubleDown } from "react-icons/bs"
+import { IconContext } from "react-icons"
+
 import authorIcon from "../images/author_icon.png"
 import labelIcon from "../images/label_icon.png"
 import dateIcon from "../images/date_icon.png"
@@ -78,6 +81,12 @@ const Card = ({
             allowDangerousHtml
             className="card-blurb"
           />
+
+          <IconContext.Provider
+            value={{ className: "card-chevron", size: "1em" }}
+          >
+            <BsChevronDoubleDown />
+          </IconContext.Provider>
         </Link>
       </li>
     </Fade>
