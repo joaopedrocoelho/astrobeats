@@ -11,11 +11,16 @@ import "./styles/about-author.css"
 const AboutMe = ({ author, avatar, header, text }) => {
   const [clicked, showText] = useState(false)
 
-  document.addEventListener("click", function (e) {
-    // e.target is the clicked element!
-    // If it was an item with class 'foo'
-    if (e.target && e.target.classList.contains("about-author-open"))
-      showText(true)
+  useEffect(() => {
+    document.addEventListener("click", function (e) {
+      // e.target is the clicked element!
+      // If it was an item with class 'foo'
+      if (e.target && e.target.classList.contains("about-author-open"))
+        showText(true)
+    })
+    return () => {
+      document.removeEventListener("click")
+    }
   })
 
   const data = useStaticQuery(graphql`
