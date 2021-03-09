@@ -11,7 +11,10 @@ const Search = ({ location }) => {
 
   return (
     <>
-      <SEO title={`search`} />
+      <SEO
+        title={`search`}
+        description={ocation.state ? location.state.term : undefined}
+      />
       <Layout sidebarisVisible={false}>
         <div className="search-page-container">
           <SearchFuse searchQuery={location.state ? location.state.term : ""} />

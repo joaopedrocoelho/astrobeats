@@ -19,7 +19,7 @@ const Article = ({
 }) => {
   const coverImage = getImage(cover)
 
-  console.log("date", date)
+  console.log("cover", cover)
   return (
     <>
       <SEO title={title} description={content} image={cover} />

@@ -16,7 +16,14 @@ const ConsultationsPage = ({ title = "Consultations", data }) => {
   const ConsultationsHeaderImg = getImage(data.image)
   return (
     <>
-      <SEO title={`consultations`} />
+      <SEO
+        title={`consultations`}
+        description={`I'm offering Natal Chart readings, where we look at the planets'
+        alignment at the moment you were born. We will look at your strengths
+        and weaknesses, possibilities, and possible challenges across topics in
+        your life, such as health, career, love, and relationships. We will also
+        check how the current cosmic weather is affecting you.`}
+      />
       <Layout heroIsVisible={false}>
         <div className="header">
           <GatsbyImage

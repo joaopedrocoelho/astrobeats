@@ -9,8 +9,8 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, image: metaImage, title }) {
-  const { site } = useStaticQuery(
+function SEO({ description, lang, meta, image, title }) {
+  const data = useStaticQuery(
     graphql`
       query {
         site {
@@ -24,21 +24,28 @@ function SEO({ description, lang, meta, image: metaImage, title }) {
             facebook
           }
         }
+        file(relativePath: { eq: "2x/purple_logo.png" }) {
+          childImageSharp {
+            original {
+              height
+              width
+              src
+            }
+          }
+        }
       }
     `
   )
-  const metaDescription = description || site.siteMetadata.description
-  const image =
-    metaImage && metaImage.src
-      ? `${site.siteMetadata.url}${metaImage.src}`
-      : null
+
+  const metaDescription = description || data.site.siteMetadata.description
+
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`%s | ${data.site.siteMetadata.title}`}
       meta={[
         {
           name: `description`,
@@ -46,7 +53,7 @@ function SEO({ description, lang, meta, image: metaImage, title }) {
         },
         {
           name: "keywords",
-          content: site.siteMetadata.keywords.join(","),
+          content: data.site.siteMetadata.keywords.join(","),
         },
         {
           property: `og:title`,
@@ -66,44 +73,43 @@ function SEO({ description, lang, meta, image: metaImage, title }) {
         },
         {
           property: `og:url`,
-          content: site.siteMetadata.url,
+          content: data.site.siteMetadata.url,
         },
       ]
-        .concat(
-          metaImage
-            ? [
-                {
-                  property: "og:image",
-                  content: image,
-                },
-                {
-                  property: "og:image:width",
-                  content: metaImage.width,
-                },
-                {
-                  property: "og:image:height",
-                  content: metaImage.height,
-                },
-                {
-                  name: "twitter:card",
-                  content: "summary_large_image",
-                },
-                {
-                  name: "twitter:image:src",
-                  content: image,
-                },
-              ]
-            : [
-                {
-                  name: "twitter:card",
-                  content: "summary",
-                },
-              ]
-        )
+        .concat([
+          {
+            property: "og:image",
+            content: image
+              ? image.publicURL
+              : data.file.childImageSharp.original.src,
+          },
+          {
+            property: "og:image:width",
+            content: image
+              ? image.childImageSharp.gatsbyImageData.width
+              : data.file.childImageSharp.original.width,
+          },
+          {
+            property: "og:image:height",
+            content: image
+              ? image.childImageSharp.gatsbyImageData.height
+              : data.file.childImageSharp.original.height,
+          },
+          {
+            name: "twitter:card",
+            content: "summary_large_image",
+          },
+          {
+            name: "twitter:image:src",
+            content: image
+              ? image.publicURL
+              : data.file.childImageSharp.original.src,
+          },
+        ])
         .concat([
           {
             name: `twitter:creator`,
-            content: site.siteMetadata.twitter,
+            content: data.site.siteMetadata.twitter,
           },
           {
             name: `twitter:title`,
@@ -115,13 +121,14 @@ function SEO({ description, lang, meta, image: metaImage, title }) {
           },
           {
             name: `twitter:site`,
-            content: site.siteMetadata.twitter,
+            content: data.site.siteMetadata.twitter,
           },
         ])
         .concat(meta)}
     />
   )
 }
+
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
@@ -138,4 +145,5 @@ SEO.propTypes = {
     width: PropTypes.number.isRequired,
   }),
 }
+
 export default SEO
