@@ -1,0 +1,338 @@
+.article-container {
+  margin: auto;
+  width: 50vw;
+  font-family: "Merriweather";
+  font-weight: 200;
+  letter-spacing: 0.5px;
+  line-height: 2.5;
+  font-size: 1.1vw;
+  color: rgb(34, 34, 34);
+}
+
+#articles {
+  position: absolute;
+  top: -4vw;
+  height: 0;
+  width: 100%;
+}
+
+.header {
+  width: 100%;
+  max-height: 40vh;
+  margin-top: -5vw;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+}
+
+.header .gatsby-image-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  width: 100%;
+  height: auto;
+}
+
+h2.title {
+  font-family: "Lato";
+
+  max-width: 46vw;
+  font-weight: 900;
+  text-align: center;
+  font-size: 4vw;
+  line-height: 1.3;
+  padding: 2vw 0 2vw 0vw;
+  margin: 2vw auto;
+  color: var(--dark-text-color);
+}
+
+.underline {
+  background-image: linear-gradient(transparent calc(65% - 5px), #000cc4 5px);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  display: inline;
+}
+
+.shadow {
+  text-shadow: 0.07em 0.05em 0 var(--text-highlight-color);
+}
+
+.article-container p:first-child {
+  text-indent: 2em;
+  margin: 1.5em auto 3em auto;
+}
+
+.article-container p {
+  text-indent: 2em;
+  margin: 3em auto;
+}
+.article-container img {
+  max-width: 36vw;
+  margin: 3vw auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.article-container a,
+.article-container a:visited,
+.article-container a:active {
+  background: linear-gradient(
+    to bottom,
+    var(--text-hover-color) 0%,
+    var(--text-hover-color) 100%
+  );
+  background-position: 0 100%;
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  color: var(--text-hover-color);
+  text-decoration: none;
+}
+
+.article-container a:hover {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='squiggle-link' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.squiggle{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}%3C/style%3E%3Cpath fill='none' stroke='%23843b8c' stroke-width='2' class='squiggle' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
+  background-position: 0 100%;
+  background-size: auto 6px;
+  background-repeat: repeat-x;
+  text-decoration: none;
+}
+
+.article-container blockquote {
+  margin: 3em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+  font-family: "Merriweather";
+  font-style: italic;
+  font-size: 2vw;
+}
+
+.article-container blockquote:before {
+  color: var(--shadow);
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+  z-index: 2;
+}
+
+.article-container blockquote:after {
+  color: var(--shadow);
+  content: close-quote;
+  font-size: 4em;
+
+  line-height: 0.1em;
+  vertical-align: -0.6em;
+  z-index: 2;
+}
+
+.article-container blockquote p {
+  display: inline;
+}
+
+.article-container blockquote p strong {
+  color: var(--dark-shadow);
+  position: relative;
+  float: right;
+  margin: 2vw 0 0 0;
+  font-style: normal;
+  font-family: "Lato";
+  font-weight: 400;
+  font-size: 0.5em;
+}
+
+.article-container ul li {
+  font-family: "Merriweather";
+}
+
+.article-container h3,
+h2 {
+  font-family: "Lato";
+  font-size: 3vw;
+  margin: 2vw auto;
+  text-shadow: 0.07em 0.05em 0 var(--shadow);
+  color: var(--dark-text-color);
+}
+
+.underlined-text-effect {
+  background-image: linear-gradient(
+    to right,
+    var(--text-highlight-color) 0,
+    var(--text-highlight-color) 100%
+  );
+  background-position: 0 0.2em;
+  box-shadow: inset 0 0.8em 0 0 white;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  transition: background 0.5s;
+  color: var(--dark-text-color);
+}
+
+.author-date {
+  font-size: 1vw;
+  font-weight: 100;
+  letter-spacing: 0.1vw;
+  color: var(--light-text-color);
+  margin-bottom: 4vw;
+  margin-top: 4vw;
+}
+
+.author-date a,
+.author-date a:visited,
+.author-date a:active {
+  font-weight: 500;
+  text-decoration: underline;
+  color: var(--light-text-color);
+  background: none;
+}
+
+.author-date a:hover {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='squiggle-link' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.squiggle{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}%3C/style%3E%3Cpath fill='none' stroke='%233b3b3b' stroke-width='2' class='squiggle' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
+  background-size: auto 4px;
+}
+
+/* horoscopes */
+
+.sign-icon {
+  float: left;
+  width: 20%;
+  margin-bottom: 0;
+  fill: var(--dark-text-color);
+}
+
+.article-container h3.sign-name {
+  text-align: center;
+  font-size: 4vw;
+  margin: 8vh 0 0 0;
+  font-family: "Merriweather";
+  text-shadow: none;
+}
+
+.article-container h3.sign-name:before {
+  content: "";
+  display: block;
+  padding-top: 8vw; /* header height + empty space */
+  margin-top: -7vw; /* header height to degrees padding’s space */
+}
+
+/* quick access bar */
+
+.quick-access-bar {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  margin: 0;
+  justify-content: space-evenly;
+  padding: 0;
+}
+
+.quick-access-bar li {
+  width: 8vw;
+  padding: 2vw 1vw 0 1vw;
+}
+
+.quick-access-bar li a:hover {
+  fill: var(--text-hover-color);
+}
+
+@media screen and (max-width: 600px) {
+  .header {
+    height: 25vh;
+  }
+
+  .article-container {
+    margin: auto;
+    width: 90vw;
+    font-family: "Merriweather";
+    line-height: 2.3;
+    font-weight: normal;
+    font-size: 4.5vw;
+  }
+
+  h2.title {
+    font-family: "Lato";
+    max-width: 90vw;
+    font-size: 10vw;
+    margin: 2vw auto;
+    color: var(--dark-text-color);
+  }
+
+  .article-container img {
+    max-width: 90vw;
+    margin: 6vh auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .article-container h3 {
+    font-size: 8vw;
+    /* text-shadow: 0.07em 0.05em 0 var(--shadow); */
+
+    color: var(--dark-text-color);
+  }
+
+  .article-container blockquote {
+    margin: 4em 10px 6em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+    font-family: "Merriweather";
+    font-style: italic;
+    font-size: 5vw;
+  }
+
+  .article-container blockquote:before {
+    color: var(--shadow);
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+  }
+
+  .article-container blockquote:after {
+    color: var(--shadow);
+    content: close-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    vertical-align: -0.6em;
+  }
+
+  .article-container blockquote p strong {
+    font-size: 0.8em;
+  }
+  .author-date {
+    font-size: 3.5vw;
+    font-weight: 200;
+    letter-spacing: 0.1vw;
+    color: var(--light-text-color);
+    opacity: 0.8;
+    margin-bottom: 4vw;
+    margin-top: 6vw;
+  }
+
+  .sign-icon {
+    float: left;
+    width: 30%;
+    margin-bottom: 0;
+    fill: var(--dark-text-color);
+  }
+
+  .quick-access-bar li {
+    width: 13vw;
+    padding-top: 4vw;
+  }
+
+  .article-container h3.sign-name {
+    font-size: 8vw;
+  }
+
+  .article-container h3.sign-name:before {
+    content: "";
+    display: block;
+    padding-top: 12vw; /* header height + empty space */
+    margin-top: -4vw; /* header height to degrees padding’s space */
+  }
+}

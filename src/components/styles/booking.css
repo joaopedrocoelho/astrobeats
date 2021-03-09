@@ -1,0 +1,88 @@
+ol.booking-nav {
+  width: 100%;
+  font-family: "Lato";
+  font-weight: 300;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  padding: 0;
+  counter-reset: section;
+  margin: auto;
+}
+ol.booking-nav li::before {
+  counter-increment: section;
+  padding-right: 0.1em;
+  content: counter(section);
+  font-size: 3em;
+  font-weight: 800;
+}
+
+ol.booking-nav li {
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 1em;
+  font-weight: 500;
+  line-height: normal;
+  margin-left: 1.5vw;
+  color: var(--shadow);
+}
+ol.booking-nav li:first-of-type {
+  margin-left: 0;
+}
+
+ol.booking-nav li.active {
+  color: var(--long-text-color);
+  border-bottom: 0.4em solid var(--border-color);
+}
+ol.booking-nav li.active::before {
+  color: var(--border-color);
+}
+
+.pay-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  scroll-margin-top: 23vw;
+}
+
+.pay-button button {
+  margin: 4vw;
+  font-size: 2em;
+  scroll-margin-top: 10vw;
+}
+
+.abt-btn.submit-btn a,
+.abt-btn.submit-btn a:visited,
+.abt-btn.submit-btn a:active {
+  background: none;
+  color: var(--text-hover-color);
+  text-decoration: none;
+}
+
+.abt-btn.submit-btn:hover a {
+  color: white;
+}
+
+.button-ref {
+  width: 0;
+  height: 0;
+  margin-top: 8vw;
+  position: relative;
+  background-color: lawngreen;
+}
+
+@media screen and (max-width: 600px) {
+  ol.booking-nav li {
+    font-size: 0.6em;
+  }
+
+  .pay-button button {
+    scroll-margin-top: 23vw;
+  }
+}

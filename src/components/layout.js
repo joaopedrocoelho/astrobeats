@@ -7,13 +7,14 @@
 
 import * as React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import Nav from "./nav"
+import Hero from "./hero"
+import Footer from "./footer"
 
-import Header from "./header"
-import "./layout.css"
+import "./style.css"
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
+const Layout = ({ children, forwardedRef, heroIsVisible }) => {
+  /* const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
         siteMetadata {
@@ -21,29 +22,14 @@ const Layout = ({ children }) => {
         }
       }
     }
-  `)
+  `) */
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `2rem`,
-          }}
-        >
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
+      <Nav />
+      <Hero isVisible={heroIsVisible} />
+      {children}
+      <Footer forwardedRef={forwardedRef} />
     </>
   )
 }

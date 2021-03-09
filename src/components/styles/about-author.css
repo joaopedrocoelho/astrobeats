@@ -1,0 +1,118 @@
+.about-author-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: inherit;
+  max-width: 50vw;
+  /*  background-color: rgb(255, 250, 222);
+  border-radius: 2%;
+  box-shadow: 0px 2px 10px 0px rgba(131, 96, 0, 0.3); */
+  margin: 2vw auto;
+  transition: all 0.5s ease-in-out;
+}
+
+.author-info .gatsby-image-wrapper {
+  width: 100%;
+  max-width: 5vw;
+  max-height: 5vw;
+  border-radius: 50%;
+  margin: 2vw 0;
+}
+
+h3.about-header {
+  font-family: "Lato";
+  display: flex;
+  position: relative;
+  align-self: center;
+  flex-wrap: wrap;
+  max-width: 46vw;
+  font-weight: 900;
+  text-align: left;
+  font-size: 2vw;
+  padding-left: 1.5vw;
+  margin: 0;
+  color: var(--dark-text-color);
+}
+
+.author-info {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: inherit;
+}
+
+.about-author-text {
+  font-family: "Merriweather";
+  font-weight: lighter;
+  font-size: 0;
+  padding: 0;
+  line-height: 2;
+  letter-spacing: 1px;
+  display: flex;
+  flex-direction: column;
+  flex-flow: wrap;
+  visibility: hidden;
+  transition: font-size 0.5s ease-in-out;
+  color: var(--light-text-color);
+}
+
+.visible {
+  visibility: visible;
+  max-height: auto;
+  width: inherit;
+  line-height: 2;
+  font-size: 0.9em;
+  padding: 0;
+}
+
+.about-author-text p:first-child {
+  margin-top: 0;
+}
+
+.more-button {
+  /* esse eh o button */
+  display: flex;
+  flex-flow: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  font-family: inherit;
+  padding: 0.3vw;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+}
+.more-button:focus {
+  outline: 0;
+}
+
+.more-button h2 {
+  margin: 0;
+}
+
+#about {
+  position: absolute;
+  top: -4vw;
+  height: 0;
+  width: 100%;
+  background: red;
+}
+
+.plus-button {
+  /*esse eh o svg */
+  display: inline-flex;
+  align-self: center;
+  width: 1.5vw;
+  height: 1.5vw;
+  fill: var(--dark-shade);
+  opacity: 0.8;
+  position: relative;
+  margin-left: 0.5vw;
+  transition: 0.5s ease;
+}
+
+.rotate90 {
+  transform: rotate(450deg);
+  transform-origin: center center 0;
+}
