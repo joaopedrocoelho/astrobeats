@@ -53,7 +53,7 @@ const IndexPage = ({ data }) => {
                     author={article.author.name}
                     content={article.content}
                     imgUrl={article.cover}
-                    date={article.created_at}
+                    date={article.published_at}
                     slug={article.slug}
                   />
                 )

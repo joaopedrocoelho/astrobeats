@@ -1,6 +1,7 @@
 import { Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import React from "react"
+import ReactMarkdownWithHtml from "react-markdown/with-html"
 import Fade from "react-reveal/Fade"
 
 import authorIcon from "../images/author_icon.png"
@@ -41,7 +42,6 @@ const Card = ({
         <Link to={articlePath + slug}>
           <div className="cover-outer-wrapper">
             <GatsbyImage image={coverImg} />
-            {/* <img src={imgUrl} className="card-img" /> */}
           </div>
           <h1 className="card-title hvr-sweep-to-right">{title}</h1>
           <p className="card-info">
@@ -72,7 +72,12 @@ const Card = ({
               })}
             </span>
           </p>
-          <p className="card-blurb">{content}</p>
+
+          <ReactMarkdownWithHtml
+            source={content}
+            allowDangerousHtml
+            className="card-blurb"
+          />
         </Link>
       </li>
     </Fade>
