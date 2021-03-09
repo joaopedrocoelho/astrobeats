@@ -97,15 +97,14 @@ const Footer = ({ forwardedRef }) => {
       </ul>
       <div className="mobile-about">
         <div id="about-mobile"></div>
-
         <div className={`about-author-mobile-text`}>
           <div className="author-mobile-info">
             <GatsbyImage image={authorPic} />
             <h3 className="about-mobile-header">
-              {data.allStrapiAuthor.nodes.name}
+              {data.allStrapiAuthor.nodes[0].name}
             </h3>
           </div>
-          <ReactMarkdown source={data.allStrapiAuthor.nodes.about} />
+          <ReactMarkdown source={data.allStrapiAuthor.nodes[0].about} />
         </div>
       </div>
       <div className="gatsby">

@@ -14,6 +14,7 @@ var window = require("global/window")
 
 const SearchFuse = ({ isVisible = true, searchQuery }) => {
   // Hooks
+  const [searchResults, setSearchResults] = useState()
   const [term, setTerm] = useState()
   const [results, setResults] = useState()
   const [numberOfResults, setNumberR] = useState()
@@ -33,44 +34,45 @@ const SearchFuse = ({ isVisible = true, searchQuery }) => {
             </Link>
           )
         }
-        setResults(
-          searchResults.map(entry => {
-            return (
-              <>
-                <Fade bottom duration={700}>
-                  <li className="search-entry">
-                    <Link to={entry.item.path}>
-                      <div className="entryTitle">
-                        {entry.item.context.cover != null ? (
-                          <img
-                            src={entry.item.context.cover.publicURL}
-                            className="search-thumb"
-                            alt={entry.item.context.title}
+        searchResults &&
+          setResults(
+            searchResults.map(entry => {
+              return (
+                <>
+                  <Fade bottom duration={700}>
+                    <li className="search-entry">
+                      <Link to={entry.item.path}>
+                        <div className="entryTitle">
+                          {entry.item.context.cover != null ? (
+                            <img
+                              src={entry.item.context.cover.publicURL}
+                              className="search-thumb"
+                              alt={entry.item.context.title}
+                            />
+                          ) : (
+                            <StaticImage
+                              src={"../images/2x/purple_logo@2x.png"}
+                              className="search-thumb"
+                              alt={entry.item.context.title}
+                            />
+                          )}
+                          <h3>{entry.item.context.title || entry.item.id}</h3>
+                        </div>
+                        <div className="entryContent">
+                          <LinesEllipsis
+                            text={entry.item.context.content || ""}
+                            maxLine="3"
+                            ellipsis="..."
+                            basedOn="words"
                           />
-                        ) : (
-                          <StaticImage
-                            src={"../images/2x/purple_logo@2x.png"}
-                            className="search-thumb"
-                            alt={entry.item.context.title}
-                          />
-                        )}
-                        <h3>{entry.item.context.title || entry.item.id}</h3>
-                      </div>
-                      <div className="entryContent">
-                        <LinesEllipsis
-                          text={entry.item.context.content || ""}
-                          maxLine="3"
-                          ellipsis="..."
-                          basedOn="words"
-                        />
-                      </div>
-                    </Link>
-                  </li>
-                </Fade>
-              </>
-            )
-          })
-        )
+                        </div>
+                      </Link>
+                    </li>
+                  </Fade>
+                </>
+              )
+            })
+          )
       } else {
         setResults("")
       }
@@ -140,7 +142,15 @@ const SearchFuse = ({ isVisible = true, searchQuery }) => {
   }
 
   const fuse = new Fuse(data.allSitePage.nodes, options)
-  const searchResults = fuse.search(term || searchQuery)
+
+  useEffect(() => {
+    setSearchResults(
+      term || searchQuery ? fuse.search(term || searchQuery) : null
+    )
+    return () => {
+      setSearchResults()
+    }
+  }, [term, searchQuery])
 
   return isVisible ? (
     <div className="search-container">

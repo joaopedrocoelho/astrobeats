@@ -39,6 +39,9 @@ function SEO({ description, lang, meta, image, title }) {
 
   const metaDescription = description || data.site.siteMetadata.description
   const metaTitle = title || data.site.siteMetadata.title
+  const metaImage = image
+    ? `${data.site.siteMetadata.url}${image.publicURL}`
+    : `${data.site.siteMetadata.url}${data.file.childImageSharp.original.src}`
 
   return (
     <Helmet
@@ -84,21 +87,15 @@ function SEO({ description, lang, meta, image, title }) {
         .concat([
           {
             property: "og:image",
-            content: image
-              ? image.publicURL
-              : data.file.childImageSharp.original.src,
+            content: metaImage,
           },
           {
             property: "og:image:width",
-            content: image
-              ? image.childImageSharp.gatsbyImageData.width
-              : data.file.childImageSharp.original.width,
+            content: metaImage,
           },
           {
             property: "og:image:height",
-            content: image
-              ? image.childImageSharp.gatsbyImageData.height
-              : data.file.childImageSharp.original.height,
+            content: metaImage,
           },
           {
             name: "twitter:card",
@@ -106,9 +103,7 @@ function SEO({ description, lang, meta, image, title }) {
           },
           {
             name: "twitter:image:src",
-            content: image
-              ? image.publicURL
-              : data.file.childImageSharp.original.src,
+            content: metaImage,
           },
         ])
         .concat([

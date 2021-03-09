@@ -22,6 +22,7 @@ const Nav = () => {
     let mobile = window.matchMedia("(max-width: 600px)")
     mobile.matches ? setAboutLink("#about-mobile") : setAboutLink("#about")
   }, [])
+
   //hamburger menu
   function toggleMenu() {
     offCanvasMenu.current.classList.toggle("is-open")
