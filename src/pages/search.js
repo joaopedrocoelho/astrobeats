@@ -13,7 +13,7 @@ const Search = ({ location }) => {
     <>
       <SEO
         title={`search`}
-        description={ocation.state ? location.state.term : undefined}
+        description={location.state ? location.state.term : undefined}
       />
       <Layout sidebarisVisible={false}>
         <div className="search-page-container">
