@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import SEO from "./seo"
 
-import ReactMarkdown from "react-markdown"
+import ReactMarkdownWithHtml from "react-markdown"
 import "./styles/article.css"
 
 const Article = ({
@@ -31,7 +31,7 @@ const Article = ({
           <h2 className="title shadow">{title}</h2>
           <div className="article-container">
             <p className="content">
-              <ReactMarkdown source={content} allowDangerousHtml={false} />
+              <ReactMarkdownWithHtml source={content} allowDangerousHtml />
             </p>
             <h6 className="author-date">
               Posted by <Link to={authorPath}>{author}</Link> on {date} in{" "}
