@@ -14,7 +14,7 @@
     "classnames": "^2.2.6",
     "dayjs": "^1.9.6",
     "fuse.js": "^6.4.6",
-    "gatsby": "^3.0.1",
+    "gatsby": "^4.25.7",
     "gatsby-plugin-gatsby-cloud": "^2.0.0",
     "gatsby-plugin-image": "^1.0.0",
     "gatsby-plugin-manifest": "^3.0.0",
